@@ -19,3 +19,17 @@ class MLP(nn.Module):
         h_pred = F.relu(self.linear1(x))
         y_pred = self.linear2(h_pred)
         return y_pred
+
+# Create a function to train the MLP
+def train(model, x, y, optimizer, criterion):
+    # Reset gradient
+    optimizer.zero_grad()
+    # Forward
+    y_pred = model(x)
+    # Loss
+    loss = criterion(y_pred, y)
+    # Backward
+    loss.backward()
+    # Update parameters
+    optimizer.step()
+    return loss\\
